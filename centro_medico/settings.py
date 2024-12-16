@@ -12,17 +12,24 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-import dotenv
 import dj_database_url
 from decouple import config
+import os
+from dotenv import load_dotenv
+import dj_database_url
+
+# Cargar las variables de entorno desde .env
+load_dotenv()
+
+# Configurar la base de datos
+DATABASES = {
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'), conn_max_age=1800)
+}
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-dotenv_file = os.path.join(BASE_DIR, ".env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -86,20 +93,11 @@ WSGI_APPLICATION = 'centro_medico.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'ezNizefsdAhzwKcahiwXRLkKkztpjmTJ',
-        'HOST': 'postgres.railway.internal',
-        'PORT': '5432',
-    }
-}
 
 
-DATABASES['default'] = dj_database_url.config()
+
+
+#DATABASES['default'] = dj_database_url.config()
 
 
 # Password validation
