@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-axly%(tw357c842r67aiby8%%2@j9fj7dj2^me-_to=(_z!5ku
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['centro-medico.vercel.app','https://centro-medico-d73y6lh0x-emquintanas-projects.vercel.app/','localhost','127.0.0.1']
 
 
 # Application definition
